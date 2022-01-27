@@ -273,3 +273,11 @@ name.addEventListener('focus', function () {
 cardnumber.addEventListener('focus', function () {
     document.querySelector('.creditcard').classList.remove('flipped');
 });
+expirationdate.addEventListener('focus', function () {
+    document.querySelector('.creditcard').classList.remove('flipped');
+});
+
+securitycode.addEventListener('focus', function () {
+    document.querySelector('.creditcard').classList.add('flipped');
+});
+};
