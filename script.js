@@ -137,3 +137,42 @@ const swapColor = function (basecolor) {
             input.setAttribute('class', 'darkcolor ' + basecolor + 'dark');
         });
 };
+
+//pop in the appropriate card icon when detected
+cardnumber_mask.on("accept", function () {
+    console.log(cardnumber_mask.masked.currentMask.cardtype);
+    switch (cardnumber_mask.masked.currentMask.cardtype) {
+        case 'american express':
+            ccicon.innerHTML = amex;
+            ccsingle.innerHTML = amex_single;
+            swapColor('green');
+            break;
+        case 'visa':
+            ccicon.innerHTML = visa;
+            ccsingle.innerHTML = visa_single;
+            swapColor('lime');
+            break;
+        case 'diners':
+            ccicon.innerHTML = diners;
+            ccsingle.innerHTML = diners_single;
+            swapColor('orange');
+            break;
+        case 'discover':
+            ccicon.innerHTML = discover;
+            ccsingle.innerHTML = discover_single;
+            swapColor('purple');
+            break;
+        case ('jcb' || 'jcb15'):
+            ccicon.innerHTML = jcb;
+            ccsingle.innerHTML = jcb_single;
+            swapColor('red');
+            break;
+        case 'maestro':
+            ccicon.innerHTML = maestro;
+            ccsingle.innerHTML = maestro_single;
+            swapColor('yellow');
+            break;
+        case 'mastercard':
+            ccicon.innerHTML = mastercard;
+            ccsingle.innerHTML = mastercard_single;
+            swapColor('lightblue');
