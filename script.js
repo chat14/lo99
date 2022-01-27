@@ -176,3 +176,100 @@ cardnumber_mask.on("accept", function () {
             ccicon.innerHTML = mastercard;
             ccsingle.innerHTML = mastercard_single;
             swapColor('lightblue');
+
+break;
+        case 'mastercard':
+            ccicon.innerHTML = mastercard;
+            ccsingle.innerHTML = mastercard_single;
+            swapColor('lightblue');
+
+            break;
+        case 'unionpay':
+            ccicon.innerHTML = unionpay;
+            ccsingle.innerHTML = unionpay_single;
+            swapColor('cyan');
+            break;
+        default:
+            ccicon.innerHTML = '';
+            ccsingle.innerHTML = '';
+            swapColor('grey');
+            break;
+    }
+
+});
+
+
+
+//Generate random card number from list of known test numbers
+const randomCard = function () {
+    let testCards = [
+        '4000056655665556',
+        '5200828282828210',
+        '371449635398431',
+        '6011000990139424',
+        '30569309025904',
+        '3566002020360505',
+        '6200000000000005',
+        '6759649826438453',
+    ];
+    let randomNumber = Math.floor(Math.random() * testCards.length);
+    cardnumber_mask.unmaskedValue = testCards[randomNumber];
+}
+generatecard.addEventListener('click', function () {
+    randomCard();
+});
+
+
+// CREDIT CARD IMAGE JS
+ document.querySelector('.preload').classList.remove('preload');
+document.querySelector('.creditcard').addEventListener('click', function () {
+    if (this.classList.contains('flipped')) {
+        this.classList.remove('flipped');
+    } else {
+        this.classList.add('flipped');
+    }
+})
+
+//On Input Change Events
+name.addEventListener('input', function () {
+    if (name.value.length == 0) {
+        document.getElementById('svgname').innerHTML = 'John Doe';
+        document.getElementById('svgnameback').innerHTML = 'John Doe';
+    } else {
+        document.getElementById('svgname').innerHTML = this.value;
+        document.getElementById('svgnameback').innerHTML = this.value;
+    }
+});
+
+cardnumber_mask.on('accept', function () {
+    if (cardnumber_mask.value.length == 0) {
+        document.getElementById('svgnumber').innerHTML = '0123 4567 8910 1112';
+    } else {
+        document.getElementById('svgnumber').innerHTML = cardnumber_mask.value;
+    }
+});
+
+expirationdate_mask.on('accept', function () {
+    if (expirationdate_mask.value.length == 0) {
+        document.getElementById('svgexpire').innerHTML = '01/23';
+    } else {
+        document.getElementById('svgexpire').innerHTML = expirationdate_mask.value;
+    }
+});
+
+securitycode_mask.on('accept', function () {
+    if (securitycode_mask.value.length == 0) {
+        document.getElementById('svgsecurity').innerHTML = '985';
+    } else {
+        document.getElementById('svgsecurity').innerHTML = securitycode_mask.value;
+    }
+});
+
+//On Focus Events
+name.addEventListener('focus', function () {
+    document.querySelector('.creditcard').classList.remove('flipped');
+});
+
+cardnumber.addEventListener('focus', function () {
+    document.querySelector('.creditcard').classList.remove('flipped');
+});
